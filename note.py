@@ -6,10 +6,14 @@ window = tk.Tk()            #instantiating Tkinter, opens window
 window.title("Budget Note") #what the window will be named
 
 #window.geometry('1200x800')
-window.resizable(0,1)
+
+window.resizable(0,1)       #window resize,0=False 1=True(x,y)
 
 window.columnconfigure(0,minsize=25)
 window.rowconfigure([0,1],minsize=10)
+
+canvas_main=tk.Canvas(window)
+canvas_main.pack()
 
 #create label for topleft part of gui
 lbl_top_left = tk.Label(
@@ -65,7 +69,7 @@ lbl_top.grid(column=1,row=0)
 #############
 #BEGIN CAVAS#
 #############
-#TODO: 
+#TODO:
 # - figure out how to size frame to stay same size
 # - need to research to find out if I need to make the entire program nested into a canvas
 cnv_1 = tk.Canvas(window,width=100,height=30)
