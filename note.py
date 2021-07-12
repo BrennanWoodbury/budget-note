@@ -49,12 +49,12 @@ lbl_top.grid(column=1,row=0)
 lbl_workspace = tk.Label(
         relief='flat',
         width=100,
-        height=30
+        height=30,
         )
-#lbl_workspace.grid(column=1, row=1)
+lbl_workspace.grid(column=1, row=1,sticky='nsew')
 
 #test text windows
-txt_1= scrolledtext.ScrolledText(window,undo=True)
+txt_1= scrolledtext.ScrolledText(lbl_workspace,undo=True)
 txt_1['font']=('consolas','12')
 txt_1['height']=(5)
 txt_1.grid(
@@ -65,7 +65,7 @@ txt_1.grid(
         sticky='n'
         )
 
-txt_2=scrolledtext.ScrolledText(window,undo=True)
+txt_2=scrolledtext.ScrolledText(lbl_workspace,undo=True)
 txt_2['font']=('consolas','12')
 txt_2['height']=(5)
 txt_2.grid(
@@ -76,7 +76,7 @@ txt_2.grid(
         sticky='n'
         )
 
-txt_3=scrolledtext.ScrolledText(window,undo=True)
+txt_3=scrolledtext.ScrolledText(lbl_workspace,undo=True)
 txt_3['font']=('consolas','12')
 txt_3['height']=(5)
 txt_3.grid(
@@ -87,12 +87,23 @@ txt_3.grid(
         sticky='n'
         )
 
-txt_4=scrolledtext.ScrolledText(window,undo=True)
+txt_4=scrolledtext.ScrolledText(lbl_workspace,undo=True)
 txt_4['font']=('consolas','12')
 txt_4['height']=(5)
 txt_4.grid(
         column=1,
         row=4,
+        pady=5,
+        padx=5,
+        sticky='n'
+        )
+
+txt_5=scrolledtext.ScrolledText(lbl_workspace,undo=True)
+txt_5['font']=('consolas','12')
+txt_5['height']=(5)
+txt_5.grid(
+        column=1,
+        row=5,
         pady=5,
         padx=5,
         sticky='n'
