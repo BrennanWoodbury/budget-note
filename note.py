@@ -12,6 +12,9 @@ window.resizable(0,1)       #window resize,0=False 1=True(x,y)
 window.columnconfigure(0,minsize=25)
 window.rowconfigure([0,1],minsize=10)
 
+#################
+#CREATING CANVAS#
+#################
 canvas_main=tk.Canvas(window)
 canvas_main.pack()
 
