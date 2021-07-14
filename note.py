@@ -18,8 +18,12 @@ window.rowconfigure([0,1],minsize=10)
 canvas_main=tk.Canvas(window)
 canvas_main.pack()
 
+
+
+
 #create label for topleft part of gui
 lbl_top_left = tk.Label(
+        canvas_main,
         text="Categories",
         borderwidth = 3,
         relief = "sunken",
@@ -34,6 +38,7 @@ lbl_top_left.grid(
 
 #left side panel
 lbl_left = tk.Label(
+        canvas_main,
 #        borderwidth=3,
         relief = 'raised',
         )
@@ -46,6 +51,7 @@ lbl_left.grid(row=1,
 
 #top middle to right panel
 lbl_top=tk.Label(
+        canvas_main,
 #        borderwidth=3,
         relief = 'raised',
         width = 100,
@@ -75,17 +81,18 @@ lbl_top.grid(column=1,row=0)
 #TODO:
 # - figure out how to size frame to stay same size
 # - need to research to find out if I need to make the entire program nested into a canvas
-cnv_1 = tk.Canvas(window,width=100,height=30)
-cnv_1.grid(column=1,row=1,sticky='nsew')
+
+#cnv_1 = tk.Canvas(window,width=100,height=30)
+#cnv_1.grid(column=1,row=1,sticky='nsew')
 
 #adding scrollbar to frame_workspace
-frame_workspace=tk.Frame(cnv_1)
-frame_workspace_scrollbar=Scrollbar(cnv_1)
-frame_workspace_scrollbar.config(command=cnv_1.yview)
+frame_workspace=tk.Frame(canvas_main)
+frame_workspace_scrollbar=Scrollbar(canvas_main)
+frame_workspace_scrollbar.config(command=canvas_main.yview)
 frame_workspace_scrollbar.grid(column=1,row=0,sticky='nse',rowspan=5)
 
 #test text windows
-txt_1=scrolledtext.ScrolledText(cnv_1,undo=True)
+txt_1=scrolledtext.ScrolledText(frame_workspace,undo=True)
 txt_1['font']=('consolas','12')
 txt_1['height']=(5)
 txt_1.grid(
@@ -96,7 +103,7 @@ txt_1.grid(
         sticky='n'
         )
 
-txt_2=scrolledtext.ScrolledText(cnv_1,undo=True)
+txt_2=scrolledtext.ScrolledText(frame_workspace,undo=True)
 txt_2['font']=('consolas','12')
 txt_2['height']=(5)
 txt_2.grid(
@@ -107,7 +114,7 @@ txt_2.grid(
         sticky='n'
         )
 
-txt_3=scrolledtext.ScrolledText(cnv_1,undo=True)
+txt_3=scrolledtext.ScrolledText(frame_workspace,undo=True)
 txt_3['font']=('consolas','12')
 txt_3['height']=(5)
 txt_3.grid(
@@ -118,7 +125,7 @@ txt_3.grid(
         sticky='n'
         )
 
-txt_4=scrolledtext.ScrolledText(cnv_1,undo=True)
+txt_4=scrolledtext.ScrolledText(frame_workspace,undo=True)
 txt_4['font']=('consolas','12')
 txt_4['height']=(5)
 txt_4.grid(
@@ -129,7 +136,7 @@ txt_4.grid(
         sticky='n'
         )
 
-txt_5=scrolledtext.ScrolledText(cnv_1,undo=True)
+txt_5=scrolledtext.ScrolledText(frame_workspace,undo=True)
 txt_5['font']=('consolas','12')
 txt_5['height']=(5)
 txt_5.grid(
