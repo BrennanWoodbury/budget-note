@@ -15,15 +15,17 @@ window.rowconfigure([0,1],minsize=10)
 #################
 #CREATING CANVAS#
 #################
-canvas_main=tk.Canvas(window)
-canvas_main.pack()
+frm_main=tk.Frame(window)
+frm_main.grid(column=0,row=0)
 
+frm_main.columnconfigure([0,1],weight=1)
+frm_main.rowconfigure([0,1,2,3,4,5,6],minsize=10,weight=1)
 
 
 
 #create label for topleft part of gui
 lbl_top_left = tk.Label(
-        canvas_main,
+        frm_main,
         text="Categories",
         borderwidth = 3,
         relief = "sunken",
@@ -33,32 +35,55 @@ lbl_top_left = tk.Label(
 lbl_top_left.grid(
         row=0,
         column=0,
-        pady=(10,0)
+        pady=(3,0),
+        sticky='nw'
         )
 
 #left side panel
-lbl_left = tk.Label(
-        canvas_main,
-#        borderwidth=3,
-        relief = 'raised',
-        )
-lbl_left.grid(row=1,
+#lbl_left = tk.Label(
+#        frm_main,
+##        borderwidth=3,
+#        relief = 'raised',
+#        )
+#lbl_left.grid(row=1,
+#        column=0,
+#        sticky='nsew',
+#        padx=(2,0)
+#        )
+
+frm_selection = tk.Frame(
+        frm_main,
+        relief='groove')
+frm_selection.grid(
+        row=1,
         column=0,
-        rowspan=4,
-        sticky='nsew',
-        padx=(2,0)
+        padx=(2,0),
+        rowspan=6
         )
+
+frm_selection.columnconfigure(0,weight=1)
+
+lbl_selection=tk.Label(
+        frm_selection,
+        borderwidth=3,
+        relief='groove'
+        )
+lbl_selection.grid(
+        row=0,
+        column=0,
+        rowspan=6,
+        sticky='nsew'
+        )
+
 
 #top middle to right panel
-lbl_top=tk.Label(
-        canvas_main,
-#        borderwidth=3,
-        relief = 'raised',
-        width = 100,
-        height = 10
-        )
-lbl_top.grid(column=1,row=0)
-
+#lbl_top=tk.Label(
+#        frm_main,
+##        borderwidth=3,
+#        relief = 'raised',
+#        )
+#lbl_top.grid(column=1,row=0,columnspan=2)
+#
 ####################################################
 #THIS IS THE WORkSPACE LABEL, REPLACING WITH CANVAS#
 ####################################################
@@ -82,13 +107,14 @@ lbl_top.grid(column=1,row=0)
 # - figure out how to size frame to stay same size
 # - need to research to find out if I need to make the entire program nested into a canvas
 
-#cnv_1 = tk.Canvas(window,width=100,height=30)
-#cnv_1.grid(column=1,row=1,sticky='nsew')
+cnv_1 = tk.Canvas(frm_main)
+cnv_1.grid(column=1,row=0,sticky='nsew',rowspan=6)
 
 #adding scrollbar to frame_workspace
-frame_workspace=tk.Frame(canvas_main)
-frame_workspace_scrollbar=Scrollbar(canvas_main)
-frame_workspace_scrollbar.config(command=canvas_main.yview)
+frame_workspace=tk.Frame(cnv_1)
+frame_workspace.grid(column=0,row=0)
+frame_workspace_scrollbar=Scrollbar(cnv_1)
+frame_workspace_scrollbar.config(command=cnv_1.yview)
 frame_workspace_scrollbar.grid(column=1,row=0,sticky='nse',rowspan=5)
 
 #test text windows
