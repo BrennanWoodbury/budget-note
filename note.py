@@ -5,7 +5,9 @@ from tkinter import Scrollbar
 window = tk.Tk()            #instantiating Tkinter, opens window
 window.title("Budget Note") #what the window will be named
 
-#window.geometry('1200x800')
+#reset the scroll region to encompass the inner fram
+def on_frame_configure(canvas):
+    canvas.configure(scrollregion=canvas.bbox("all"))
 
 window.resizable(0,1)       #window resize,0=False 1=True(x,y)
 
@@ -76,33 +78,6 @@ lbl_selection.grid(
         )
 
 
-#top middle to right panel
-#lbl_top=tk.Label(
-#        frm_main,
-##        borderwidth=3,
-#        relief = 'raised',
-#        )
-#lbl_top.grid(column=1,row=0,columnspan=2)
-#
-####################################################
-#THIS IS THE WORkSPACE LABEL, REPLACING WITH CANVAS#
-####################################################
-#bulk of the program, where all the inputs will be
-#lbl_workspace = tk.Label(
-#        relief='flat',
-#        width=100,
-#        height=30,
-#        )
-#lbl_workspace.grid(column=1, row=1,sticky='nsew')
-##adding scrollbar to workspace
-#workspace_scrollbar = Scrollbar(lbl_workspace)
-#workspace_scrollbar.config(command=lbl_workspace.yview)
-#workspace_scrollbar.pack(side='left')
-#
-
-#############
-#BEGIN CAVAS#
-#############
 #TODO:
 # - figure out how to size frame to stay same size
 # - need to research to find out if I need to make the entire program nested into a canvas
@@ -116,6 +91,9 @@ frame_workspace.grid(column=0,row=0)
 frame_workspace_scrollbar=Scrollbar(cnv_1)
 frame_workspace_scrollbar.config(command=cnv_1.yview)
 frame_workspace_scrollbar.grid(column=1,row=0,sticky='nse',rowspan=5)
+
+text_boxes = [0]
+
 
 #test text windows
 txt_1=scrolledtext.ScrolledText(frame_workspace,undo=True)
@@ -172,6 +150,8 @@ txt_5.grid(
         padx=5,
         sticky='n'
         )
+
+cnv_1.bind("<configure>", lambda e:cnv_1.configure(scrollregion = my_canvas.bbox("all")))
 
 #Program run until user exits
 window.mainloop()
