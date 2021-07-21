@@ -2,12 +2,41 @@ import tkinter.scrolledtext as scrolledtext
 import tkinter as tk
 from tkinter import Scrollbar
 
+text_boxes = [0]
+
+def entry_frame_creation(master):
+    for i in range(text_boxes):
+        txt_box_frame = tk.Frame(master,relief='sunken',borderwidth=1).grid(row=i,column=0)
+
+
+
+def text_box_creation(master):
+    for i in range():
+        scrollable_text_box = scrolledtext.ScrolledText(txt_box_frame,undo=True)
+        scrollable_text_box['font']=('consolas','12')
+        scrollable_text_box['height']=(5)
+        scrollable_text_box.grid(
+                column=0,
+                row=0,
+                pady=5,
+                padx=5,
+                sticky='nsew'
+                )
+
+
+
+
 window = tk.Tk()            #instantiating Tkinter, opens window
 window.title("Budget Note") #what the window will be named
 
 #reset the scroll region to encompass the inner fram
 def on_frame_configure(canvas):
     canvas.configure(scrollregion=canvas.bbox("all"))
+
+
+
+
+
 
 window.resizable(0,1)       #window resize,0=False 1=True(x,y)
 
@@ -92,7 +121,7 @@ frame_workspace_scrollbar=Scrollbar(cnv_1)
 frame_workspace_scrollbar.config(command=cnv_1.yview)
 frame_workspace_scrollbar.grid(column=1,row=0,sticky='nse',rowspan=5)
 
-text_boxes = [0]
+
 
 
 #test text windows
